@@ -3,6 +3,7 @@
 ### It's a Tags Demo.
 
 Support：
+
 · Show select list
 - Batch paste
 - Delete Tag via Backspace
