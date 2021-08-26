@@ -4,7 +4,7 @@
 
 Support：
 
-· Show select list
+- Show select list
 - Batch paste
 - Delete Tag via Backspace
 - Up/Down Key Select
