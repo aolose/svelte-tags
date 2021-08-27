@@ -42,7 +42,7 @@
     async function kd(en) {
         let {value, selectionEnd: e, selectionStart: s} = this;
         const {code, key} = en;
-        if (/Arrow(Up|Down|Right)/.test(code)) {
+        if (/Arrow(Up|Down|Right)|Tab/.test(code)) {
             const l = db.length
             let p = 0
             if (l && /up|down/i.test(code)) {
@@ -54,7 +54,7 @@
                 if (idx < 0) idx = 0
                 if (idx > l - 1) idx = l - 1
                 p = 1
-            } else if ('ArrowRight' === code && e === value.length) {
+            } else if (/Tab|ArrowRight/.test(code) && e === value.length) {
                 const c = db[idx];
                 if (c) {
                     v = c
@@ -94,7 +94,7 @@
 
     async function po(value, s, e, ipt, lf) {
         if (/ /.test(value)) {
-            const c = value.split(' ').filter(a => a)
+            const c = value.split(/ +/).filter(a => a&&ts.indexOf(a)===-1)
             let l = c.length
             if (e < value.length && s > 0) l--
             if (l) {
@@ -129,7 +129,7 @@
 
     $:{
         pos()
-        db = $tags.filter(a => v && a !== v && !a.indexOf(v.toLowerCase()))
+        db = $tags.filter(a => v && a !== v &&ts.indexOf(a)===-1 &&!a.indexOf(v.toLowerCase()))
         pr = db[idx] || ''
     }
 </script>
